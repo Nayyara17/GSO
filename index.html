@@ -99,8 +99,8 @@
         }
         
         .instruksi {
-            background: linear-gradient(135deg, #ff7a00, #2c5f5f);
-            color: white;
+            background: linear-gradient(#d4edda);
+            color: #2c5f5f;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
@@ -159,14 +159,14 @@
 </head>
 <body>
     <!-- Template image - letakkan foto JPG Anda di sini -->
-    <img id="templateImage" src="template-sertifikat.png" alt="Template Sertifikat">
+    <img id="templateImage" src="01_sertif.png" alt="Template Sertifikat">
     
     <div class="kontrol-panel">
-        <h2>📄 Generator Sertifikat Otomatis</h2>
+        <h2>Generator Sertifikat Otomatis</h2>
         <p style="text-align: center; color: #666;">Masukkan nama dan langsung download sertifikat!</p>
         
         <div class="instruksi">
-            <h3>📋 Cara Penggunaan:</h3>
+            <h3>Cara Penggunaan:</h3>
             <p>1. Masukkan nama penerima sertifikat → 2. Klik "Buat Sertifikat" → 3. Download langsung!</p>
         </div>
         
@@ -184,7 +184,7 @@
         
         <div class="loading" id="loading">⏳ Sedang memproses...</div>
         <div class="success-message" id="successMessage">✅ Sertifikat berhasil dibuat! Silakan download.</div>
-        <div class="error-message" id="errorMessage">❌ Template tidak ditemukan! Pastikan file template-sertifikat.jpg ada di folder yang sama.</div>
+        <div class="error-message" id="errorMessage">❌ Template tidak ditemukan! Pastikan file template-sertifikat.png ada di folder yang sama.</div>
     </div>
     
     <div class="canvas-container" id="canvasContainer" style="display: none;">
@@ -243,7 +243,7 @@
         
         function generateCertificate() {
             if (!templateImage) {
-                alert('Template belum dimuat! Pastikan file template-sertifikat.jpg ada di folder yang sama.');
+                alert('Template belum dimuat! Pastikan file template-sertifikat.png ada di folder yang sama.');
                 return;
             }
             
@@ -284,17 +284,17 @@
             const nama = document.getElementById('namaInput').value || 'Nama Penerima';
             
             // Auto-detect best position and size for text
-            const fontSize = Math.max(13, Math.min(29, canvas.width / 25));
+            const fontSize = Math.max(18, Math.min(36, canvas.width / 22)); // sedikit lebih besar
             
             // Set font with black color
             ctx.font = `bold ${fontSize}px Arial`;
-            ctx.fillStyle = '#000000'; // Black color
+            ctx.fillStyle = '#ff7a00'; 
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             
             // Position text below "berikan kepada;" text
             const textX = canvas.width / 2;
-            const textY = canvas.height * 0.42; // 42% from top
+            const textY = canvas.height * 0.47; // 42% from top
             
             // Add text shadow for better visibility
             ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
@@ -336,17 +336,17 @@
             const nama = document.getElementById('namaInput').value || 'Nama Penerima';
             
             // Scale font size
-            const fontSize = Math.max(39, Math.min(87, downloadCanvas.width / 25));
+            const fontSize = Math.max(48, Math.min(100, downloadCanvas.width / 20)); // menyesuaikan versi resolusi tinggi;
             
             // Set font for high-res with black color
             downloadCtx.font = `bold ${fontSize}px Arial`;
-            downloadCtx.fillStyle = '#000000'; // Black color
+            downloadCtx.fillStyle = '#ff7a00';
             downloadCtx.textAlign = 'center';
             downloadCtx.textBaseline = 'middle';
             
             // Position text below "berikan kepada;" text
             const textX = downloadCanvas.width / 2;
-            const textY = downloadCanvas.height * 0.42; // 42% from top
+            const textY = downloadCanvas.height * 0.47; // 42% from top
             
             // Add text shadow
             downloadCtx.shadowColor = 'rgba(255, 255, 255, 0.8)';
